@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký - HandTranslate</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 350px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .register-box h2 { margin-bottom: 20px; color: #2c3e50; }
+    .register-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .register-box button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .register-box button:hover { background: #1e8449; }
+    p { margin-top: 15px; }
+    a { color: #3498db; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>Đăng ký</h2>
+    <form>
+      <input type="text" placeholder="Tên người dùng" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Mật khẩu" required>
+      <input type="password" placeholder="Xác nhận mật khẩu" required>
+      <button type="submit">Đăng ký</button>
+    </form>
+    <p>Đã có tài khoản? <a href="{% url 'login' %}">Đăng nhập</a></p>
+    <p><a href="{% url 'home' %}">⬅ Quay lại Trang chủ</a></p>
+  </div>
+</body>
+</html>

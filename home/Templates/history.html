@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử dịch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+header h1 img {
+    height: 40px;
+    margin-right: 10px;
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+        .history-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+             max-height: 400px;  
+    overflow-y: auto; 
+    scrollbar-width: thin; 
+        }
+        .history-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 4px;
+}
+
+.history-container::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    gap: 15px;
+}
+
+.history-left, .history-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-text, .output-text {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+
+.sign-img {
+    width: 80px;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 4px;
+}
+
+.lang {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+.time {
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+    font-style: italic;
+}
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .delete-btn:hover {
+            color: #c0392b;
+        }
+        /* ==== FOOTER ==== */
+footer {
+    background: #181a1cff;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    .site-footer {
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    padding: 40px 20px;
+    }
+}
+
+.site-footer h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.site-footer p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.social-icons {
+    margin: 15px 0;
+}
+
+.social-icons a {
+    color: #ccc;
+    margin: 0 8px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #e67e22;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    background: #e67e22;
+    color: white;
+    border-color: #e67e22;
+}
+
+.copyright {
+    font-size: 13px;
+    margin-top: 20px;
+    color: #888;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>
+            <img src="{% static 'images/logo.png' %}" alt="HandTranslate">
+            HandTranslate
+        </h1>
+        <nav>
+            <a href="#">Văn bản</a>
+            <a href="#">Tài liệu</a>
+            <a href="#">Hình ảnh</a>
+            <a href="#">Trang web</a>
+            <a href="#">Lịch sử</a>
+    
+        <a href="{% url 'home' %}" style="color:white;">Trang chủ</a>
+
+    </nav>
+</header>
+
+<div class="history-container">
+    <h2>Lịch sử dịch</h2>
+
+     <!-- Text → Ký hiệu -->
+    <div class="history-item">
+        <div class="history-left">
+            <p class="input-text"><strong>Xin chào</strong></p>
+            <span class="lang">Vietnamese → Ký hiệu</span>
+            <span class="time">Dịch lúc 20:15, 14/09/2025</span>
+        </div>
+        
+        <div class="history-right">
+            <img src="{% static 'images/sign_xinchao.gif' %}" alt="Xin chào ký hiệu" class="sign-img">
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="history-item">
+        <div class="history-left">
+            <p class="input-text"><strong>Cảm ơn</strong></p>
+            <span class="lang">Vietnamese → Ký hiệu</span>
+            <span class="time">Dịch lúc 20:15, 14/09/2025</span>
+        </div>
+        
+        <div class="history-right">
+            <img src="{% static 'images/sign_xinchao.gif' %}" alt="Xin chào ký hiệu" class="sign-img">
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="history-item">
+        <div class="history-left">
+            <p class="input-text"><strong>Hello</strong></p>
+            <span class="lang">Tiếng anh → Ký hiệu</span>
+            <span class="time">Dịch lúc 20:15, 14/09/2025</span>
+        </div>
+        
+        <div class="history-right">
+            <img src="{% static 'images/sign_xinchao.gif' %}" alt="Xin chào ký hiệu" class="sign-img">
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="history-item">
+        <div class="history-left">
+            <p class="input-text"><strong>Thanks</strong></p>
+            <span class="lang">Tiếng anh → Ký hiệu</span>
+            <span class="time">Dịch lúc 20:15, 14/09/2025</span>
+        </div>
+        
+        <div class="history-right">
+            <img src="{% static 'images/sign_xinchao.gif' %}" alt="Xin chào ký hiệu" class="sign-img">
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+
+    <!-- Ký hiệu → Text -->
+    <div class="history-item">
+        <div class="history-left">
+            <img src="{% static 'images/sign_toiyeuban.gif' %}" alt="Tôi yêu bạn ký hiệu" class="sign-img">
+        </div>
+        <div class="history-right">
+            <p class="output-text"><strong>사랑해요</strong></p>
+            <span class="lang">Ký hiệu → Hàn uốc</span>
+            <span class="time">Dịch lúc 20:20, 14/09/2025</span>
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+     <div class="history-item">
+        <div class="history-left">
+            <img src="{% static 'images/sign_toiyeuban.gif' %}" alt="Tôi yêu bạn ký hiệu" class="sign-img">
+        </div>
+        <div class="history-right">
+            <p class="output-text"><strong>我爱你</strong></p>
+            <span class="lang">Ký hiệu → Trung Quốc</span>
+            <span class="time">Dịch lúc 20:20, 14/09/2025</span>
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+
+ <div class="history-item">
+        <div class="history-left">
+            <img src="{% static 'images/sign_toiyeuban.gif' %}" alt="Tôi yêu bạn ký hiệu" class="sign-img">
+        </div>
+        <div class="history-right">
+            <p class="output-text"><strong>ฉันรักคุณ</strong></p>
+            <span class="lang">Ký hiệu → Thái Lan</span>
+            <span class="time">Dịch lúc 20:20, 14/09/2025</span>
+        </div>
+        <button class="delete-btn"><i class="fas fa-trash"></i></button>
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Footer -->
+    <footer class="site-footer">
+  <div class="footer-content">
+    <h2>HandTranslate</h2>
+    <p>Kết nối cộng đồng – Xóa bỏ rào cản ngôn ngữ giữa người khiếm thính và mọi người.</p>
+    
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="#">Trang chủ</a></li>
+      <li><a href="#">Giới thiệu</a></li>
+      <li><a href="#">Liên hệ</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+
+    <p class="copyright">© 2025 HandTranslate. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
